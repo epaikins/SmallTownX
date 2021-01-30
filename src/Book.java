@@ -10,13 +10,13 @@ public class Book {
         // Marks the book as rented
         public void borrowed() {
             this.borrowed = true;
-            System.out.println("The book is rented");
+            //System.out.println("The book is rented");
         }
 
         // Marks the book as not rented
         public void returned() {
             this.borrowed = false;
-            System.out.println("Book has been returned");
+            //System.out.println("Book has been returned");
         }
 
         // Returns true if the book is rented, false otherwise

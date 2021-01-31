@@ -21,17 +21,20 @@ public class Library {
     }
 
     public void printAvailableBooks(){
-        if(books.size()>0){
-            for(Book book : books){
-                if(!book.isBorrowed()){
-                    System.out.println(book.getTitle());
+        int size = books.size();
+        for(Book book : books){
+            if(!book.isBorrowed()){
+                System.out.println(book.getTitle());
                 }
+            else {
+                size -= 1;
             }
         }
-        else{
-            System.out.println("No book in catalog");
+            if(size == 0){
+                System.out.println("No book in catalog");
+            }
         }
-    }
+
 
     public void borrowBook(String title){
         String result = "Sorry, this book is not in our catalog.";
@@ -39,7 +42,7 @@ public class Library {
             if(book.getTitle().equals(title)){
                 if(!book.borrowed) {
                     book.borrowed();
-                    result = "You successfully borrowed The Lord of the Rings";
+                    result = "You successfully borrowed "+title;
                 }
                 else{
                     result ="Sorry, this book is already borrowed.";
@@ -53,7 +56,7 @@ public class Library {
         for(Book book : books){
             if(book.title.equals(title)){
                 book.returned();
-                System.out.println("You successfully returned The Lord of the Rings");
+                System.out.println("You successfully returned " + title);
             }
         }
     }
@@ -84,6 +87,9 @@ public class Library {
 // Try to borrow The Lords of the Rings from both libraries
         System.out.println("Borrowing The Lord of the Rings:");
         firstLibrary.borrowBook("The Lord of the Rings");
+        //firstLibrary.borrowBook("The Da Vinci Code");
+        firstLibrary.borrowBook("Le Petit Prince");
+        firstLibrary.borrowBook("A Tale of Two Cities");
         firstLibrary.borrowBook("The Lord of the Rings");
         secondLibrary.borrowBook("The Lord of the Rings");
         System.out.println();
